@@ -35,6 +35,9 @@ public class User implements UserDetails {
 	@Column(name = "username", nullable = false, unique = true)
 	private String username;
 
+	@Column(name = "nickname", nullable = false, unique = true)
+	private String nickname;
+
 	@Column(name = "password", nullable = false)
 	private String password;
 
@@ -48,9 +51,10 @@ public class User implements UserDetails {
 
 	}
 
-	public User(String username, String password, boolean enabled, String role) {
+	public User(String username, String nickname, String password, boolean enabled, String role) {
 		super();
 		this.username = username;
+		this.nickname = nickname;
 		this.password = password;
 		this.enabled = enabled;
 		this.role = role;

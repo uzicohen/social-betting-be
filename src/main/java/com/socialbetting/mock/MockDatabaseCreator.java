@@ -60,10 +60,10 @@ public class MockDatabaseCreator {
 	}
 
 	public void load() throws ParseException {
-		User user1 = this.UserRepository.save(
-				new User("uzicohen9@gmail.com", this.bCryptPasswordEncoder.encode("uzi636"), true, User.ROLE_ADMIN));
+		User user1 = this.UserRepository.save(new User("uzicohen9@gmail.com", "uzinio",
+				this.bCryptPasswordEncoder.encode("uzi636"), true, User.ROLE_ADMIN));
 
-		User user2 = this.UserRepository.save(new User("almog.bregman@gmail.com",
+		User user2 = this.UserRepository.save(new User("almog.bregman@gmail.com", "almogi",
 				this.bCryptPasswordEncoder.encode("abcd2106"), true, User.ROLE_USER));
 
 		Tournament tournament = this.tournamentRepository
