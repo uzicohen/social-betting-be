@@ -20,6 +20,10 @@ public class Game {
 	private @Id @GeneratedValue Long id;
 
 	@ManyToOne
+	@JoinColumn(name = "competition")
+	private Competition competition;
+
+	@ManyToOne
 	@JoinColumn(name = "team_id1")
 	private Team team1;
 
@@ -32,8 +36,9 @@ public class Game {
 	private Game() {
 	}
 
-	public Game(Team team1, Team team2, Date date) {
+	public Game(Competition competition, Team team1, Team team2, Date date) {
 		super();
+		this.competition = competition;
 		this.team1 = team1;
 		this.team2 = team2;
 		this.date = date;

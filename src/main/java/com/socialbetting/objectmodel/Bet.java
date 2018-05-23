@@ -29,8 +29,8 @@ public class Bet {
 	private Game game;
 
 	@ManyToOne
-	@JoinColumn(name = "tournament_instance")
-	private TournamentInstance tournamentInstance;
+	@JoinColumn(name = "tournament")
+	private Tournament tournament;
 
 	private int team1;
 
@@ -41,11 +41,11 @@ public class Bet {
 	private Bet() {
 	}
 
-	public Bet(User user, Game game, TournamentInstance tournamentInstance, int team1, int team2, Date date) {
+	public Bet(User user, Game game, Tournament tournament, int team1, int team2, Date date) {
 		super();
 		this.user = user;
 		this.game = game;
-		this.tournamentInstance = tournamentInstance;
+		this.tournament = tournament;
 		this.team1 = team1;
 		this.team2 = team2;
 		this.date = date;

@@ -1,11 +1,13 @@
 package com.socialbetting.objectmodel;
 
-
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -16,16 +18,28 @@ import lombok.Data;
 public class Tournament {
 
 	private @Id @GeneratedValue Long id;
+
+	@ManyToOne
+	@JoinColumn(name = "created_by")
+	private User createdBy;
+
 	private String name;
-	private String photoUrl;
-	private String description;
 
-	private Tournament() {
+	private Date dateCreated;
+
+	@ManyToOne
+	@JoinColumn(name = "competition")
+	private Competition competition;
+
+	public Tournament() {
 	}
 
-	public Tournament(String name, String photoUrl, String description) {
+	public Tournament(User createdBy, String name, Date dateCreated, Competition competition) {
+		super();
+		this.createdBy = createdBy;
 		this.name = name;
-		this.photoUrl = photoUrl;
-		this.description = description;
+		this.dateCreated = dateCreated;
+		this.competition = competition;
 	}
+
 }

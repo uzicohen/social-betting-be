@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -29,7 +31,7 @@ public class User implements UserDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "user_id", nullable = false, updatable = false)
+	@Column(name = "id", nullable = false, updatable = false)
 	private Long id;
 
 	@Column(name = "username", nullable = false, unique = true)
@@ -38,12 +40,15 @@ public class User implements UserDetails {
 	@Column(name = "nickname", nullable = false, unique = true)
 	private String nickname;
 
+	@JsonIgnore
 	@Column(name = "password", nullable = false)
 	private String password;
 
+	@JsonIgnore
 	@Column(name = "enabled", nullable = false)
 	private boolean enabled;
 
+	@JsonIgnore
 	@Column(name = "role", nullable = false)
 	private String role;
 

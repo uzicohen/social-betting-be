@@ -14,18 +14,18 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "tournament_subscription")
-public class TournamentSubscription {
+@Table(name = "tournament_user")
+public class TournamentUser {
 
 	public static final String TOURNAMENT_ROLE_ADMIN = "tournament_role_admin";
-	
+
 	public static final String TOURNAMENT_ROLE_PARTICIPANT = "tournament_role_participant";
 
 	private @Id @GeneratedValue Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "tournament_instance")
-	private TournamentInstance tournamentInstance;
+	@JoinColumn(name = "tournament")
+	private Tournament tournament;
 
 	@ManyToOne
 	@JoinColumn(name = "_user")
@@ -35,15 +35,18 @@ public class TournamentSubscription {
 
 	private Date dateJoined;
 
-	public TournamentSubscription() {
+	private int score;
+
+	public TournamentUser() {
 	}
 
-	public TournamentSubscription(TournamentInstance tournamentIntance, User user, String role, Date dateJoined) {
+	public TournamentUser(Tournament tournament, User user, String role, Date dateJoined) {
 		super();
-		this.tournamentInstance = tournamentIntance;
+		this.tournament = tournament;
 		this.user = user;
 		this.role = role;
 		this.dateJoined = dateJoined;
+		this.score = 0;
 	}
 
 }
