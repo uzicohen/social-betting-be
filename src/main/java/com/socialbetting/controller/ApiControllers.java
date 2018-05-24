@@ -57,6 +57,9 @@ public class ApiControllers {
 	public ResponseEntity<List<Tournament>> getAllTournaments(Principal principal) {
 		String username = principal.getName();
 		List<Tournament> allTours = this.tournamentRepository.getAllTournaments(username);
+		for (Tournament tour : allTours) {
+			tour.setBets(this.betRepository.getAllBets(username, tour));
+		}
 		return ResponseEntity.ok(allTours);
 	}
 

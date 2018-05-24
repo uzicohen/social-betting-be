@@ -1,6 +1,8 @@
 package com.socialbetting.objectmodel;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -31,7 +34,11 @@ public class Tournament {
 	@JoinColumn(name = "competition")
 	private Competition competition;
 
+	@Transient
+	private List<Bet> bets;
+
 	public Tournament() {
+		this.bets = new ArrayList<>();
 	}
 
 	public Tournament(User createdBy, String name, Date dateCreated, Competition competition) {
@@ -40,6 +47,7 @@ public class Tournament {
 		this.name = name;
 		this.dateCreated = dateCreated;
 		this.competition = competition;
+		this.bets = new ArrayList<>();
 	}
 
 }

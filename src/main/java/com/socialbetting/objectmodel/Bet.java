@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -22,6 +24,7 @@ public class Bet {
 
 	@OneToOne
 	@JoinColumn(name = "_user")
+	@JsonIgnore
 	private User user;
 
 	@ManyToOne
@@ -30,6 +33,7 @@ public class Bet {
 
 	@ManyToOne
 	@JoinColumn(name = "tournament")
+	@JsonIgnore
 	private Tournament tournament;
 
 	private int team1;
