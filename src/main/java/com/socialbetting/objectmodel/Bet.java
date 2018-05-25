@@ -40,19 +40,19 @@ public class Bet {
 
 	private int team2;
 
-	private Date date;
+	private String date;
 
 	private Bet() {
 	}
 
-	public Bet(User user, Game game, Tournament tournament, int team1, int team2, Date date) {
+	public Bet(User user, Game game, Tournament tournament, int team1, int team2) {
 		super();
 		this.user = user;
 		this.game = game;
 		this.tournament = tournament;
 		this.team1 = team1;
 		this.team2 = team2;
-		this.date = date;
+		this.date = game.getDate();
 	}
 
 }

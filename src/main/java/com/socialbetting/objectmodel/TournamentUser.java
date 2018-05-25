@@ -2,6 +2,7 @@ package com.socialbetting.objectmodel;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
@@ -33,6 +34,7 @@ public class TournamentUser {
 
 	private String role;
 
+	@Column(name = "date_joined")
 	private Date dateJoined;
 
 	private int score;

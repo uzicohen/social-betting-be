@@ -1,7 +1,6 @@
 package com.socialbetting.objectmodel;
 
-
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
@@ -16,8 +15,12 @@ import lombok.Data;
 public class Competition {
 
 	private @Id @GeneratedValue Long id;
+
 	private String name;
+
+	@Column(name = "photo_url")
 	private String photoUrl;
+
 	private String description;
 
 	private Competition() {

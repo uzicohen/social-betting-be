@@ -1,12 +1,13 @@
 package com.socialbetting.objectmodel;
 
-
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -15,17 +16,29 @@ import lombok.Data;
 @Table(name = "team")
 public class Team {
 
-	private @Id @GeneratedValue Long id;
+	private @Id Long id;
+
 	private String name;
-	private String photoUrl;
-	private String description;
+
+	@ManyToOne
+	@JoinColumn(name = "competition")
+	@JsonIgnore
+	private Competition competition;
+
+	@Column(name = "fifa_code")
+	private String fifaCode;
+
+	private String flag;
 
 	private Team() {
 	}
 
-	public Team(String name, String photoUrl, String description) {
+	public Team(long id, Competition competition, String name, String fifaCode, String flag) {
+		this.id = id;
+		this.competition = competition;
 		this.name = name;
-		this.photoUrl = photoUrl;
-		this.description = description;
+		this.fifaCode = fifaCode;
+		this.flag = flag;
 	}
+
 }
